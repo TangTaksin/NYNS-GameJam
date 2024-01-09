@@ -23,7 +23,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void correctMove()
+    private void Update()
+    {
+        Debug.Log(correctedPipes);
+    }
+
+    public void CorrectMove()
     {
         correctedPipes += 1;
         Debug.Log("Correct Move");
@@ -31,14 +36,32 @@ public class GameManager : MonoBehaviour
         if (correctedPipes == totalPipes)
         {
             Debug.Log("You Win!");
+            ActivateBoxColliders();
         }
 
     }
 
-    public void  wrongMove()
+    public void WrongMove()
     {
         correctedPipes -= 1;
         Debug.Log("Wrong Move");
+        if (correctedPipes < -1)
+        {
+            correctedPipes = 0;
 
+        }
+
+    }
+
+    void ActivateBoxColliders()
+    {
+        foreach (GameObject pipe in Pipes)
+        {
+            BoxCollider2D collider = pipe.GetComponent<BoxCollider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
+        }
     }
 }
