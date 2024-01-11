@@ -15,12 +15,12 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void LoadLevelSelectScene()
     {
-        StartCoroutine(BuildingMovement.MoveBuildingToLeftAndLoadScene(building, target, durationLoadScene));
+        StartCoroutine(UIMovement.MoveBuildingToLeftAndLoadScene(building, target, durationLoadScene));
     }
 
     public void LoadMainMenuSceneWithTransition()
     {
-        StartCoroutine(BuildingMovement.MoveBuildingToRightAndLoadScene(building, target, durationLoadScene));
+        StartCoroutine(UIMovement.MoveBuildingToRightAndLoadScene(building, target, durationLoadScene));
     }
 
     public void BackToMenu()
@@ -31,6 +31,11 @@ public class SceneTransitionManager : MonoBehaviour
     public void StartLevel1()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void FadeVertexColorText()
+    {
+
     }
 
     public void ExitGame()
