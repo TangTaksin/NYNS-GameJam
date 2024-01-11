@@ -7,48 +7,48 @@ using UnityEngine.UI;
 public class LevelSelect : MonoBehaviour
 {
     [SerializeField] private RectTransform character;
-    [SerializeField] private float durationLoadScene = 0.5f;
+    [SerializeField] private float loadSceneDuration = 0.5f;
     [SerializeField] private Vector2 target;
     [SerializeField] private int totalLevel = 8;
-    [SerializeField] private Button[] levelButton;
-    public Image Lock;
-    public Image UnLock;
+    [SerializeField] private Button[] levelButtons;
+    public Image lockImage;
+    public Image unlockImage;
 
     private void Start()
     {
         UnlockLevel(1);
-        UpdateUILevelSelect();
+        UpdateLevelSelectUI();
     }
 
-    public void UpdateUILevelSelect()
+    public void UpdateLevelSelectUI()
     {
-        for (int i = 0; i < levelButton.Length; i++)
+        for (int i = 0; i < levelButtons.Length; i++)
         {
             int levelNum = i + 1;
 
-            if (levelButton[i] != null && levelButton[i].GetComponent<Button>() != null && levelButton[i].GetComponent<Image>() != null)
+            if (levelButtons[i] != null && levelButtons[i].GetComponent<Button>() != null && levelButtons[i].GetComponent<Image>() != null)
             {
                 if (levelNum > totalLevel || !IsLevelUnlocked(levelNum))
                 {
-                    levelButton[i].interactable = false;
-                    levelButton[i].GetComponent<Image>().sprite = Lock.sprite;
+                    levelButtons[i].interactable = false;
+                    levelButtons[i].GetComponent<Image>().sprite = lockImage.sprite;
                 }
                 else
                 {
-                    levelButton[i].interactable = true;
-                    levelButton[i].GetComponent<Image>().sprite = UnLock.sprite;
+                    levelButtons[i].interactable = true;
+                    levelButtons[i].GetComponent<Image>().sprite = unlockImage.sprite;
                 }
             }
             else
             {
-                Debug.LogError("One of the required components is null in levelButton[" + i + "]");
+                Debug.LogError("One of the required components is null in levelButtons[" + i + "]");
             }
         }
     }
 
-    public void loadLevel(int levelIndex)
+    public void LoadLevel(int levelIndex)
     {
-        StartCoroutine(UIMovement.CharacterMovement(character, target, durationLoadScene, levelIndex));
+        StartCoroutine(UIMovement.CharacterMovement(character, target, loadSceneDuration, levelIndex));
     }
 
     public void UnlockLevel(int levelIndex)
@@ -58,7 +58,7 @@ public class LevelSelect : MonoBehaviour
             Debug.Log("ClearLevel");
             PlayerPrefs.SetInt("Level" + levelIndex + "_Unlocked", 1);
             PlayerPrefs.Save();
-            UpdateUILevelSelect();
+            UpdateLevelSelectUI();
         }
         else
         {
@@ -66,12 +66,12 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
-    public void ResetAllLevel()
+    public void ResetAllLevels()
     {
         PlayerPrefs.DeleteAll();
         UnlockLevel(1);  // Unlock level 1 as the default
         PlayerPrefs.Save();
-        UpdateUILevelSelect();
+        UpdateLevelSelectUI();
     }
 
     private bool IsLevelUnlocked(int levelIndex)
