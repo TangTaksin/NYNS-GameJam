@@ -8,20 +8,24 @@ public class Player : MonoBehaviour
     Rigidbody2D rb2D;
     Vector2 facingDirection;
 
-
-    [SerializeField] bool isTopDown = true;
     [SerializeField] float charSpeed = 2f;
-
-    [Header("Side Scroll Option")] // is side scroll mode necessery? probably not. but i'm doin' it anyway!
-    [SerializeField] float gravityScale = 1f;
-    [SerializeField] float jumpHeight = 1f;
 
     [Header("Pipe Placement")]
     [SerializeField] Grid grid;
+    [SerializeField] float grabRange = 1.5f;
     List<Pipe> currentPipes = new List<Pipe>();
+
     [SerializeField] Transform pipeHoldPos;
-    [SerializeField] Transform projectionSprite;
+    [SerializeField] SpriteRenderer projectionSprite;
+    [SerializeField] Color placableColor = Color.white, unplacableColor = Color.red;
+    Vector3 projectionTarget;
+    bool canPlace;
+
     [SerializeField] LayerMask pipeLayer;
+    [SerializeField] LayerMask placementCheckLayer;
+
+    [Header("Visual")]
+    [SerializeField] SpriteRenderer playerSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -42,28 +46,33 @@ public class Player : MonoBehaviour
 
     void ReceiveInput()
     {
-        input = new Vector2(Input.GetAxisRaw("Horizontal"), 
-                            Input.GetAxisRaw("Vertical") * isTopDown.GetHashCode());
+        input = new Vector2(Input.GetAxisRaw("Horizontal"),
+                            Input.GetAxisRaw("Vertical"));
         input.Normalize();
+
+        if (Input.GetKeyDown(KeyCode.Q) && (currentPipes.Count > 0))
+        {
+            currentPipes[0].Rotate();
+        }
+
     }
 
     //can move
     void Movement()
     {
         // if not in topdown mode then apply gravity
-        rb2D.gravityScale = gravityScale * (!isTopDown).GetHashCode();
-
         var velY = input.y * charSpeed;
         var velX = input.x * charSpeed;
 
-        rb2D.velocity = new Vector2(velX, 
-            Mathf.Lerp(velY, rb2D.velocity.y, (!isTopDown).GetHashCode())); // Use velY if isTopDown is true,
+        rb2D.velocity = new Vector2(velX, velY); // Use velY if isTopDown is true,
                                                                             // else use rb's y velocity.
     }
     
     void UpdateDirection()
     {
         facingDirection = Vector2.Lerp(facingDirection, input, input.sqrMagnitude);
+        var rotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 90) * facingDirection);
+        playerSprite.transform.rotation = Quaternion.Lerp(playerSprite.transform.rotation, rotation, Time.deltaTime * 15);
     }
 
     //can pickup pipe
@@ -71,12 +80,17 @@ public class Player : MonoBehaviour
     {
         PlacementProjection();
 
+        if (currentPipes.Count > 0)
+        {
+            currentPipes[0].transform.position = Vector3.Lerp(currentPipes[0].transform.position, pipeHoldPos.position, Time.deltaTime * 15);
+        }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (currentPipes.Count <= 0) //PickUp
             {
                 //shoot raycast
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection,1f,pipeLayer);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, grabRange, pipeLayer);
 
                 print(hit.collider);
 
@@ -85,18 +99,15 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.TryGetComponent<Pipe>(out var pipe);
                     currentPipes.Add(pipe);
 
-                    currentPipes[0].transform.SetParent(pipeHoldPos.transform);
-                    currentPipes[0].SetCollider(false);
-
-                    LeanTweenExt.LeanMove(currentPipes[0].gameObject, pipeHoldPos.position, .1f).setEaseInOutQuad();
+                    currentPipes[0].SetLiftState(true);
                 }
             }
-            else if (Physics2D.OverlapBox(projectionSprite.position, grid.cellSize, 0f) == null)//Place
+            else if (canPlace) //Place
             {
                 currentPipes[0].transform.SetParent(null);
+                LeanTweenExt.LeanMove(currentPipes[0].gameObject, projectionTarget, .1f).setEaseInOutQuad();
+                currentPipes[0].SetLiftState(false);
 
-                LeanTweenExt.LeanMove(currentPipes[0].gameObject, projectionSprite.position, .1f).setEaseInOutQuad();
-                currentPipes[0].SetCollider(true);
                 currentPipes.Clear();
                 
             }
@@ -110,14 +121,25 @@ public class Player : MonoBehaviour
         if (currentPipes.Count <= 0)
             return;
 
-        //Project Placement
+        canPlace = (Physics2D.OverlapBox(projectionTarget, grid.cellSize, 0f, placementCheckLayer) == null);
+
+        //Projection Placement
         projectionSprite.gameObject.SetActive(true);
-        Vector3Int cellPosition = grid.WorldToCell(transform.position + (Vector3)facingDirection * 1.5f);
-        projectionSprite.position = grid.GetCellCenterWorld(cellPosition);
+
+        Vector3Int cellPosition = grid.WorldToCell(transform.position + (Vector3)facingDirection * grabRange);
+        projectionTarget = grid.GetCellCenterWorld(cellPosition);
+
+        projectionSprite.transform.position = Vector3.MoveTowards(projectionSprite.transform.position, projectionTarget, Time.deltaTime * 20);
+
+        //Projection Color
+        if (canPlace)
+            projectionSprite.color = placableColor;
+        else
+            projectionSprite.color = unplacableColor;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, (Vector2)transform.position + facingDirection * 1.5f);
+        Gizmos.DrawLine(transform.position, (Vector2)transform.position + facingDirection * grabRange);
     }
 }
