@@ -8,6 +8,11 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField] private float durationLoadScene = 0.5f;
     [SerializeField] private Vector2 target;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         building = GameObject.Find("Building").GetComponent<RectTransform>();
