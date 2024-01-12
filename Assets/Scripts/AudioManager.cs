@@ -34,8 +34,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayMusic(BGMusic);
-
-
     }
 
     public void PlayMusic(AudioClip MusicClip)

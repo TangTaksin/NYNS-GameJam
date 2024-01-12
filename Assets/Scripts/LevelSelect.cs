@@ -66,6 +66,11 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
+    public void ClearLevel(int levelIndex)
+    {
+        SceneManager.LoadScene("Level" + levelIndex);
+    }
+
     public void ResetAllLevels()
     {
         PlayerPrefs.DeleteAll();

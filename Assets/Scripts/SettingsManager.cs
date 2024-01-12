@@ -15,6 +15,7 @@ public class SettingsManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("musicVolume"))
         {
+            Debug.Log("LoadVolume");
             LoadVolume();
         }
     }
@@ -36,6 +37,7 @@ public class SettingsManager : MonoBehaviour
 
     public void LoadVolume()
     {
+        Debug.Log("Loading volume");
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume");
     }
