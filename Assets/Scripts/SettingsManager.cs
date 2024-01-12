@@ -11,13 +11,18 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    private void Start()
+    private void Awake()
     {
-        if (PlayerPrefs.HasKey("musicVolume"))
+        if (PlayerPrefs.HasKey("musicVolume") || PlayerPrefs.HasKey("sfxVolume"))
         {
-            Debug.Log("LoadVolume");
             LoadVolume();
         }
+
+    }
+
+    private void Start()
+    {
+
     }
 
     public void SetMusicVolume()
