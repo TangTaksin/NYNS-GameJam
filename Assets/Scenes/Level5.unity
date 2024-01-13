@@ -1262,11 +1262,11 @@ PrefabInstance:
       objectReference: {fileID: 1848263038}
     - target: {fileID: 3024719416637868433, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3024719416637868433, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3796209638841443907, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_Name
@@ -1312,6 +1312,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1152955582}
+    - target: {fileID: 7712930808855362337, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7763781186182501913, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1320,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1152955582}
+    - target: {fileID: 7763781186182501913, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7816961093004731264, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 1
@@ -5947,11 +5955,41 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -3, y: -9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -2, y: -8, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -4, y: -6, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 3
       m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -5, y: -5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5993,8 +6031,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 3
+    m_Data: {fileID: 11400000, guid: 66520bf33447d7240846258573aae9a8, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 04f3812c4fcbfbc478e7d8d4230b7ffa, type: 2}
   - m_RefCount: 3
@@ -6004,14 +6042,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 3
+    m_Data: {fileID: -1993474357, guid: 8d19462353083e3428e9e9ec11cb8fcd, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -645218494, guid: 8d19462353083e3428e9e9ec11cb8fcd, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -316078500, guid: 8d19462353083e3428e9e9ec11cb8fcd, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 5
+  - m_RefCount: 8
     m_Data:
       e00: 1
       e01: 0
@@ -6030,7 +6068,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 5
+  - m_RefCount: 8
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -9541,6 +9579,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -8, y: -9, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 13
+      m_TileSpriteIndex: 13
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -1, y: -9, z: 0}
     second:
       serializedVersion: 2
@@ -9582,16 +9630,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -18, y: -8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -7, y: -8, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 13
@@ -11233,6 +11271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wireRed_4way
       objectReference: {fileID: 0}
+    - target: {fileID: 3062944769577515881, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e5dd224c947dcd48b95f6f0c4073a21, type: 3}
     - target: {fileID: 8242026251014923129, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5
@@ -11272,6 +11314,18 @@ PrefabInstance:
     - target: {fileID: 8242026251014923129, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046717670397004961, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
+      propertyPath: contentFilter.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046717670397004961, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
+      propertyPath: contentFilter.Array.data[1]
+      value: BlueElec
+      objectReference: {fileID: 0}
+    - target: {fileID: 9046717670397004961, guid: f202d95e79353f34f8e87eb04b9dca5c, type: 3}
+      propertyPath: contentFilter.Array.data[2]
+      value: GreenElec
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

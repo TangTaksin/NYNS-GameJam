@@ -3895,6 +3895,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1700085548}
+    - target: {fileID: 7712930808855362337, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7763781186182501913, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3903,6 +3907,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1700085548}
+    - target: {fileID: 7763781186182501913, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7816961093004731264, guid: 6290617dde6a1f8419dd31d274ca09c8, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 1
