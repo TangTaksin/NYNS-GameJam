@@ -127,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 5120
-        width: 2064
-        height: 1024
+        y: 1280
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: Ending_1
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 5120
-        width: 2064
-        height: 1024
+        x: 516
+        y: 1280
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -169,11 +169,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4096
-        width: 2064
-        height: 1024
+        y: 1024
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: Ending_3
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 4096
-        width: 2064
-        height: 1024
+        x: 516
+        y: 1024
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -211,11 +211,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3072
-        width: 2064
-        height: 1024
+        y: 768
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Ending_5
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 3072
-        width: 2064
-        height: 1024
+        x: 516
+        y: 768
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,11 +253,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2048
-        width: 2064
-        height: 1024
+        y: 512
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -273,12 +273,12 @@ TextureImporter:
       name: Ending_7
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 2048
-        width: 2064
-        height: 1024
+        x: 516
+        y: 512
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -295,11 +295,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1024
-        width: 2064
-        height: 1024
+        y: 256
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: Ending_9
       rect:
         serializedVersion: 2
-        x: 2064
-        y: 1024
-        width: 2064
-        height: 1024
+        x: 516
+        y: 256
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,10 +338,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2064
-        height: 1024
+        width: 516
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,27 +349,6 @@ TextureImporter:
       bones: []
       spriteID: 0569dbd3d74908347ba2d3fd8f4d9468
       internalID: 746963806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ending_11
-      rect:
-        serializedVersion: 2
-        x: 2064
-        y: 0
-        width: 2064
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a27b2070c373064184cc7de0f33be7f
-      internalID: 832906215
       vertices: []
       indices: 
       edges: []
