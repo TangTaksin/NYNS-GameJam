@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     Vector2 facingDirection;
 
     [SerializeField] float charSpeed = 2f;
+    [SerializeField] KeyCode pickupKey;
+    [SerializeField] KeyCode rotateKey;
 
     [Header("Pipe Placement")]
     [SerializeField] Grid grid;
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour
 
         playerAnimator.SetFloat("InputStrenght", input.sqrMagnitude);
 
-        if (Input.GetKeyDown(KeyCode.Q) && (currentPipes.Count > 0))
+        if (Input.GetKeyDown(rotateKey) && (currentPipes.Count > 0))
         {
             playerAnimator.SetTrigger("Rotate");
             currentPipes[0].Rotate();
@@ -105,7 +107,7 @@ public class Player : MonoBehaviour
             currentPipes[0].transform.position = Vector3.Lerp(currentPipes[0].transform.position, pipeHoldPos.position, Time.deltaTime * 15);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(pickupKey))
         {
             if (currentPipes.Count <= 0) //PickUp
             {
