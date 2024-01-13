@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     List<Pipe> currentPipes = new List<Pipe>();
 
     [SerializeField] Transform pipeHoldPos;
-    
-    
+
+
     Vector3 projectionTarget;
     bool canPlace;
 
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
 
         rb2D.velocity = new Vector2(velX, velY);
     }
-    
+
     void UpdateDirection()
     {
         facingDirection = Vector2.Lerp(facingDirection, input, input.sqrMagnitude);
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
                 currentPipes[0].SetLiftState(false);
 
                 currentPipes.Clear();
-                
+
             }
         }
     }
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (currentPipes.Count <= 0)
             return;
 
-        canPlace = (Physics2D.OverlapBox(projectionTarget, grid.cellSize, 0f, placementCheckLayer) == null);
+        canPlace = (Physics2D.OverlapBox(projectionTarget, grid.cellSize * .9f, 0f, placementCheckLayer) == null);
 
         //Projection Placement
         projectionSprite.gameObject.SetActive(true);
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
             projectionSprite.color = unplacableColor;
     }
 
-    
+
 
     private void OnDrawGizmos()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MissionCondition : MonoBehaviour
 {
     [SerializeField] List<Pipe> GoalPipes;
+    [SerializeField] GameObject levelClearPanel;
 
     bool eventSent;
     public delegate void CompleteEvent();
@@ -34,6 +35,8 @@ public class MissionCondition : MonoBehaviour
                 onComplete?.Invoke();
                 eventSent = true;
                 print("Clear!");
+                levelClearPanel.SetActive(true);
+                Time.timeScale = 0;
             }
         }
     }
