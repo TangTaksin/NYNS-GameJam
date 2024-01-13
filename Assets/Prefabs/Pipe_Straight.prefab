@@ -152,7 +152,7 @@ MonoBehaviour:
   - {fileID: 1665661250501969853}
   - {fileID: 43079680190793996}
   text: {fileID: 0}
-  pipeSprite: {fileID: 0}
+  pipeSprite: {fileID: 3062944769577515881}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   flowColor: {r: 0, g: 0.6901961, b: 1, a: 1}
 --- !u!1 &3634475038808311938
