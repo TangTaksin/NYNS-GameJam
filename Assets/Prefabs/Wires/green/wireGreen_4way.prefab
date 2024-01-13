@@ -331,8 +331,8 @@ MonoBehaviour:
   - {fileID: 1651840686077440162}
   text: {fileID: 0}
   pipeSprite: {fileID: 3062944769577515881}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  flowColor: {r: 1, g: 0.90588236, b: 0.654902, a: 1}
+  normalColor: {r: 0.79607844, g: 0.79607844, b: 0.79607844, a: 1}
+  flowColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &3634475038808311938
 GameObject:
   m_ObjectHideFlags: 0
