@@ -6,9 +6,10 @@ public class MissionCondition : MonoBehaviour
 {
     [SerializeField] List<Pipe> GoalPipes;
 
-    bool eventSent;
     public delegate void CompleteEvent();
-    public static CompleteEvent onComplete;
+    public CompleteEvent onComplete;
+
+    bool goalMet = true;
 
     // Wining condition
     // All goal pipes got wihat it what.
@@ -17,24 +18,21 @@ public class MissionCondition : MonoBehaviour
     {
         if (GoalPipes.Count > 0)
         {
-            var goalMet = true;
+            goalMet = true;
 
             foreach (var content in GoalPipes)
             {
                 if (!content.CheckGoal())
                 {
                     goalMet = false;
-                    eventSent = false;
                     break;
                 }
             }
-
-            if (goalMet && !eventSent)
-            {
-                onComplete?.Invoke();
-                eventSent = true;
-                print("Clear!");
-            }
         }
+    }
+
+    public bool GetMissionState()
+    {
+        return goalMet;
     }
 }
