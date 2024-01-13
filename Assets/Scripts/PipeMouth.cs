@@ -7,6 +7,22 @@ public class PipeMouth : MonoBehaviour
     public delegate void ConnectEvent(Pipe pipe);
     public ConnectEvent onConnect;
     public ConnectEvent onDisconnect;
+    public ParticleSystem waterParticle;
+
+    Pipe mouthParent;
+    bool isConnect;
+
+    private void Start()
+    {
+        mouthParent = GetComponentInParent<Pipe>();
+    }
+
+    private void Update()
+    {
+        var particleCondition = (mouthParent.GetFlow() && !isConnect);
+
+        waterParticle.gameObject.SetActive(particleCondition);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +31,7 @@ public class PipeMouth : MonoBehaviour
             var otherPipe = otherMouth.GetComponentInParent<Pipe>();
             print(otherPipe.name);
             onConnect.Invoke(otherPipe);
+            isConnect = true;
         }
     }
 
@@ -24,6 +41,8 @@ public class PipeMouth : MonoBehaviour
         {
             var otherPipe = otherMouth.GetComponentInParent<Pipe>();
             onDisconnect.Invoke(otherPipe);
+            isConnect = false;
         }
     }
+
 }

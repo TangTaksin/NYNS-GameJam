@@ -5,6 +5,12 @@ using TMPro;
 
 public class Pipe : MonoBehaviour // is a Pipe
 {
+    enum PipeType { Start, Passage, End}
+    [SerializeField] PipeType pipeType = PipeType.Passage;
+
+    [SerializeField] List<string> holdingContents = new List<string>();
+    [SerializeField] List<string> contentFilter = new List<string>();
+
     // has mouths
     [SerializeField] PipeMouth[] mouths;
     [SerializeField] TextMeshPro text;
@@ -12,19 +18,11 @@ public class Pipe : MonoBehaviour // is a Pipe
     [SerializeField] Color normalColor = Color.white;
     [SerializeField] Color flowColor = Color.cyan;
 
-    enum PipeType { Start, Passage, End}
-    [SerializeField] PipeType pipeType = PipeType.Passage;
-
     List<Collider2D> colliders = new List<Collider2D>();
     List<Pipe> connectedPipe = new List<Pipe>();
     bool isBeingLift;
     bool hasFlow;
     float angle;
-
-    public delegate void FlowEvent();
-
-    public delegate void CompleteEvent ();
-    public static CompleteEvent onComplete;
 
     public void Start()
     {
@@ -63,8 +61,9 @@ public class Pipe : MonoBehaviour // is a Pipe
         FlowUpdate();
     }
 
+    #region FLOw Related
+
     List<Pipe> flowSources = new List<Pipe>();
-    //List<Pipe> flowSources;
     
     void AddFlowSource(Pipe sourcePipe)
     {
@@ -103,25 +102,26 @@ public class Pipe : MonoBehaviour // is a Pipe
             // it will send to <all pipe that it did not get flow from>. 
             if (!flowSources.Contains(pipe) && hasFlow)
             {
-                pipe.FlowReceive(this);
-                print("send flow to : " + pipe);
+                foreach (var content in holdingContents)
+                {
+                    pipe.FlowReceive(this, content); 
+                }
             }
         }
     }
 
-    public void FlowReceive(Pipe pipe)
+    public void FlowReceive(Pipe pipe, string content)
     {
-        if (pipeType != PipeType.Start)
+        if (contentFilter.Contains(content))
         {
-            AddFlowSource(pipe);
-        }
-
-        if (pipeType == PipeType.End)
-        {
-            if (hasFlow)
+            if (pipeType != PipeType.Start)
             {
-                onComplete?.Invoke();
+                print(string.Format("recieved {0} from {1}", content, pipe));
+
+                AddFlowSource(pipe);
+                AddContent(content);
             }
+
         }
     }
 
@@ -134,18 +134,25 @@ public class Pipe : MonoBehaviour // is a Pipe
 
         if (pipeType != PipeType.Start)
         {
-            if (flowSources == null)
+            if (flowSources.Count <= 0)
             {
                 SetFlow(false);
+                ClearContent();
             }
             else
+            {
                 SetFlow(CheckAnyFlow());
 
-            foreach (var pipe in flowSources)
-            {
-                if (!pipe.hasFlow)
-                    RemoveFlowSource(pipe);
+                foreach (var pipe in flowSources)
+                {
+                    if (!pipe.hasFlow)
+                    {
+                        ClearContent();
+                        RemoveFlowSource(pipe);
+                    }
+                }
             }
+
         }
 
     }
@@ -156,11 +163,52 @@ public class Pipe : MonoBehaviour // is a Pipe
         pipeSprite.color = hasFlow ? flowColor : normalColor;
     }
 
+    public bool GetFlow()
+    {
+        return hasFlow;
+    }
+
+    #endregion
 
     public void SetLiftState(bool state)
     {
         isBeingLift = state;
     }
+
+
+    void AddContent(string content)
+    {
+        if (!holdingContents.Contains(content))
+        {
+            holdingContents.Add(content);
+        }
+    }
+
+    void ClearContent()
+    {
+        if (holdingContents.Count > 0)
+        {
+
+            holdingContents.Clear();
+        }
+    }
+
+    public bool CheckGoal()
+    {
+        var goalMet = true;
+
+        foreach (var content in contentFilter)
+        {
+            if (!holdingContents.Contains(content) && !hasFlow)
+            {
+                goalMet = false;
+                break;
+            }
+        }
+
+        return goalMet;
+    }
+
 
     public void SetCollider(bool state)
     {
@@ -181,6 +229,7 @@ public class Pipe : MonoBehaviour // is a Pipe
         connectedPipe.Remove(pipe);
         RemoveFlowSource(pipe);
     }
+
 
     //can Rotate
     public void Rotate()

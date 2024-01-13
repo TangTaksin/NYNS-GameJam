@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
     List<Pipe> currentPipes = new List<Pipe>();
 
     [SerializeField] Transform pipeHoldPos;
-    [SerializeField] SpriteRenderer projectionSprite;
-    [SerializeField] Color placableColor = Color.white, unplacableColor = Color.red;
+    
+    
     Vector3 projectionTarget;
     bool canPlace;
 
@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
 
     [Header("Visual")]
     [SerializeField] SpriteRenderer playerSprite;
+    [SerializeField] SpriteRenderer grabSprite;
+    [SerializeField] SpriteRenderer projectionSprite;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] Color placableColor = Color.white, unplacableColor = Color.red;
 
     // Start is called before the first frame update
     void Start()
@@ -50,8 +54,11 @@ public class Player : MonoBehaviour
                             Input.GetAxisRaw("Vertical"));
         input.Normalize();
 
+        playerAnimator.SetFloat("InputStrenght", input.sqrMagnitude);
+
         if (Input.GetKeyDown(KeyCode.Q) && (currentPipes.Count > 0))
         {
+            playerAnimator.SetTrigger("Rotate");
             currentPipes[0].Rotate();
         }
 
@@ -64,8 +71,7 @@ public class Player : MonoBehaviour
         var velY = input.y * charSpeed;
         var velX = input.x * charSpeed;
 
-        rb2D.velocity = new Vector2(velX, velY); // Use velY if isTopDown is true,
-                                                                            // else use rb's y velocity.
+        rb2D.velocity = new Vector2(velX, velY);
     }
     
     void UpdateDirection()
@@ -80,6 +86,20 @@ public class Player : MonoBehaviour
     {
         PlacementProjection();
 
+        playerAnimator.SetBool("isLifting", (currentPipes.Count > 0));
+
+        //shoot raycast
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, grabRange, pipeLayer);
+
+        var appearCondit = (hit && currentPipes.Count < 1);
+
+        grabSprite.gameObject.SetActive(appearCondit);
+
+        if (hit)
+        {
+            grabSprite.gameObject.transform.position = Vector3.Lerp(grabSprite.gameObject.transform.position, hit.transform.position, Time.deltaTime * 15);
+        }
+
         if (currentPipes.Count > 0)
         {
             currentPipes[0].transform.position = Vector3.Lerp(currentPipes[0].transform.position, pipeHoldPos.position, Time.deltaTime * 15);
@@ -89,11 +109,6 @@ public class Player : MonoBehaviour
         {
             if (currentPipes.Count <= 0) //PickUp
             {
-                //shoot raycast
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, grabRange, pipeLayer);
-
-                print(hit.collider);
-
                 if (hit)
                 {
                     hit.collider.gameObject.TryGetComponent<Pipe>(out var pipe);
@@ -137,6 +152,8 @@ public class Player : MonoBehaviour
         else
             projectionSprite.color = unplacableColor;
     }
+
+    
 
     private void OnDrawGizmos()
     {

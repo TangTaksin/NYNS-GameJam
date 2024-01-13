@@ -144,13 +144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42579c8fa0fd5d14fa2ad64e37aebb00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pipeType: 1
   mouths:
   - {fileID: 1665661250501969853}
   text: {fileID: 0}
   pipeSprite: {fileID: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   flowColor: {r: 0, g: 0.68859696, b: 1, a: 1}
-  pipeType: 1
 --- !u!1 &3634475038808311938
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +183,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: -0.1, y: 0.5, z: 0.4}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4488588867774349560}
   m_Father: {fileID: 8242026251014923129}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &3579112349798458519
@@ -295,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561f082fad22ce14094a913094d3fe22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterParticle: {fileID: 6061950845288381093}
 --- !u!50 &1185718425674068852
 Rigidbody2D:
   serializedVersion: 4
@@ -322,3 +324,70 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &3631851085813946862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4579328883766492751}
+    m_Modifications:
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0000014603138
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5000911
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5000911
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4999089
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4999089
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680581085160325781, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+      propertyPath: m_Name
+      value: Water
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+--- !u!4 &4488588867774349560 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 877153658317838614, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+  m_PrefabInstance: {fileID: 3631851085813946862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6061950845288381093 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7369733407917761355, guid: 90dcf43c7d4ac2b48a81c44ded55e569, type: 3}
+  m_PrefabInstance: {fileID: 3631851085813946862}
+  m_PrefabAsset: {fileID: 0}
