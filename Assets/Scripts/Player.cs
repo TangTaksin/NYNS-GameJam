@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (currentPipes.Count <= 0)
             return;
 
-        canPlace = (Physics2D.OverlapBox(projectionTarget, grid.cellSize, 0f, placementCheckLayer) == null);
+        canPlace = (Physics2D.OverlapBox(projectionTarget, grid.cellSize * .9f, 0f, placementCheckLayer) == null);
 
         //Projection Placement
         projectionSprite.gameObject.SetActive(true);
