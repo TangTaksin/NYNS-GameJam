@@ -11,8 +11,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource SFXSource;
 
     [Header("===================Audio Clip=================")]
-    [SerializeField] AudioClip BGMusic;
-    [SerializeField] AudioClip rotateSFX;
+    [SerializeField] public AudioClip BGMusic;
+    [SerializeField] public AudioClip rotateSFX;
+    [SerializeField] public AudioClip pickupSFX;
+    [SerializeField] public AudioClip dropSFX;
 
     
 

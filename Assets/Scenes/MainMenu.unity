@@ -1020,7 +1020,9 @@ MonoBehaviour:
   musicSource: {fileID: 502123643}
   SFXSource: {fileID: 1136407468}
   BGMusic: {fileID: 8300000, guid: 8de1bfcd192e8074c9093298bcae1712, type: 3}
-  rotateSFX: {fileID: 8300000, guid: 17169cdc99a27024e9caaa39f99af387, type: 3}
+  rotateSFX: {fileID: 8300000, guid: 82023419f47b5084a9a3ea5f986ff2df, type: 3}
+  pickupSFX: {fileID: 8300000, guid: 224d75df20d835e4c8e399a8eabb28ea, type: 3}
+  dropSFX: {fileID: 8300000, guid: 9d56c0eae1c9cba4e9f25d5f2d404681, type: 3}
 --- !u!1 &415864902
 GameObject:
   m_ObjectHideFlags: 0

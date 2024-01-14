@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(rotateKey) && (currentPipes.Count > 0))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.rotateSFX);
             playerAnimator.SetTrigger("Rotate");
             currentPipes[0].Rotate();
         }
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
             {
                 if (hit)
                 {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.pickupSFX);
                     hit.collider.gameObject.TryGetComponent<Pipe>(out var pipe);
                     currentPipes.Add(pipe);
 
@@ -121,6 +123,7 @@ public class Player : MonoBehaviour
             }
             else if (canPlace) //Place
             {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.dropSFX);
                 currentPipes[0].transform.SetParent(null);
                 LeanTweenExt.LeanMove(currentPipes[0].gameObject, projectionTarget, .1f).setEaseInOutQuad();
                 currentPipes[0].SetLiftState(false);

@@ -2146,7 +2146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Objective: \nConnec pipes from start to end."
+  m_text: "Objective: \nConnect pipes from start to end."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a9b7dccf416dbc48b42eb0bf1d47efa, type: 2}
   m_sharedMaterial: {fileID: 4985211136756027967, guid: 5a9b7dccf416dbc48b42eb0bf1d47efa, type: 2}
