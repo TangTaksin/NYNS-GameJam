@@ -68,6 +68,10 @@ public class LevelSelect : MonoBehaviour
 
     public void ClearLevel(int levelIndex)
     {
+        if (levelIndex == 9)
+        {
+            AudioManager.Instance.StopMusic();
+        }
         SceneManager.LoadScene("Level" + levelIndex);
     }
 

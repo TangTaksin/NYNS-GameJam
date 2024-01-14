@@ -53,6 +53,7 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.BGMusic);
         Time.timeScale = 1f; // Resume the game before going back to the main menu
         SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with the name of your main menu scene
     }
