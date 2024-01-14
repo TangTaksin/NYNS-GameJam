@@ -3276,6 +3276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 74607470}
   - component: {fileID: 74607469}
+  - component: {fileID: 74607471}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -3298,7 +3299,6 @@ MonoBehaviour:
   GoalPipes:
   - {fileID: 350709340}
   - {fileID: 1942617305}
-  levelClearPanel: {fileID: 480538168}
 --- !u!4 &74607470
 Transform:
   m_ObjectHideFlags: 0
@@ -3314,6 +3314,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &74607471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74607468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879595ba58bdea44d9b694679ba3595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionCondition: {fileID: 74607469}
+  levelClearPanel: {fileID: 480538168}
 --- !u!1 &133951946
 GameObject:
   m_ObjectHideFlags: 0

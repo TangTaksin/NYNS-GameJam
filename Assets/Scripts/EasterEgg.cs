@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,18 +38,32 @@ public class EasterEgg : MonoBehaviour
         if (!hasTriggeredEasterEgg)
         {
             // Check which window was toggled
-            for (int i = 0; i < windows.Length; i++)
+            int toggledIndex = Array.IndexOf(windows, changedToggle);
+
+            if (toggledIndex != -1)
             {
-                if (windows[i] == changedToggle)
+                Debug.Log("Window " + toggledIndex + " toggled: " + changedToggle.isOn);
+
+                // Check if only the specific windows indicated by passwords[0], passwords[1], and passwords[2] are ON
+                bool isCorrectCombination = true;
+
+                for (int i = 0; i < windows.Length; i++)
                 {
-                    Debug.Log("Window " + i + " toggled: " + changedToggle.isOn);
-
-                    if (windows[passwords[0]].isOn && windows[passwords[1]].isOn && windows[passwords[2]].isOn)
+                    // Check if the specified window is ON
+                    if (Array.IndexOf(passwords, i) != -1)
                     {
-                        DoSomeThing();
+                        isCorrectCombination &= windows[i].isOn;
                     }
+                    else
+                    {
+                        // Check that windows other than the specified ones are OFF
+                        isCorrectCombination &= !windows[i].isOn;
+                    }
+                }
 
-                    break;
+                if (isCorrectCombination)
+                {
+                    DoSomeThing();
                 }
             }
         }

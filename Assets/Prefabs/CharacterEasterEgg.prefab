@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3619733191772102292}
   - component: {fileID: 5664418592775087511}
   - component: {fileID: 913565729399958735}
+  - component: {fileID: 1529908786800869985}
   m_Layer: 5
   m_Name: CharacterEasterEgg
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ee92963684088a4d8017353890b1038, type: 3}
+  m_Sprite: {fileID: -2002113017, guid: d6d7f1e98260b99498e35f3bcdd68c17, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &1529908786800869985
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811916307236754189}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -9,7 +9,7 @@ public class MissionCondition : MonoBehaviour
     public delegate void CompleteEvent();
     public CompleteEvent onComplete;
 
-    bool goalMet = true;
+    bool goalMet = false;
 
     // Wining condition
     // All goal pipes got wihat it what.

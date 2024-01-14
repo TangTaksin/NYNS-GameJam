@@ -7950,6 +7950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265695177}
   - component: {fileID: 1265695176}
+  - component: {fileID: 1265695178}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -7973,7 +7974,6 @@ MonoBehaviour:
   - {fileID: 1337933989}
   - {fileID: 1990259756}
   - {fileID: 813951355}
-  levelClearPanel: {fileID: 542331582}
 --- !u!4 &1265695177
 Transform:
   m_ObjectHideFlags: 0
@@ -7989,6 +7989,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1265695178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265695175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879595ba58bdea44d9b694679ba3595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionCondition: {fileID: 1265695176}
+  levelClearPanel: {fileID: 542331582}
 --- !u!1001 &1288811969
 PrefabInstance:
   m_ObjectHideFlags: 0
