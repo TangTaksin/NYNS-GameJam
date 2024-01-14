@@ -7,8 +7,8 @@ public class EasterEgg : MonoBehaviour
     [SerializeField] private Toggle[] windows;
     [SerializeField] private int[] passwords;
 
-    [SerializeField] private Image imageToChange;
-    [SerializeField] private Image character;
+    [SerializeField] private Animator characterAnimator;
+    [SerializeField] private Animator characterSpriteAnimator;
 
     [SerializeField] ParticleSystem particle;
 
@@ -75,9 +75,15 @@ public class EasterEgg : MonoBehaviour
     {
         Debug.Log("Easter Egg");
 
-        if (imageToChange != null)
+        if (characterAnimator != null)
         {
-            character.sprite = imageToChange.sprite;
+            // Assuming you have parameters in your animator controller that trigger different animations
+            characterAnimator.SetTrigger("EasterEggTrigger");
+        }
+
+        if (characterSpriteAnimator != null)
+        {
+            characterSpriteAnimator.SetTrigger("EasterEggTrigger");
         }
 
         if (audioSource != null && easterEggSound != null)
