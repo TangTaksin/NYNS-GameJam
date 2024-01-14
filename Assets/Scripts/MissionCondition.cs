@@ -31,6 +31,11 @@ public class MissionCondition : MonoBehaviour
         }
     }
 
+    public List<Pipe> GetPipes()
+    {
+        return GoalPipes;
+    }
+
     public bool GetMissionState()
     {
         return goalMet;
