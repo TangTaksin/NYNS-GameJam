@@ -10,6 +10,8 @@ public class EasterEgg : MonoBehaviour
     [SerializeField] private Image imageToChange;
     [SerializeField] private Image character;
 
+    [SerializeField] ParticleSystem particle;
+
     [SerializeField] private AudioClip easterEggSound;
     [SerializeField] private AudioSource audioSource;
 
@@ -82,6 +84,8 @@ public class EasterEgg : MonoBehaviour
         {
             audioSource.PlayOneShot(easterEggSound);
         }
+
+        particle?.Play();
 
         // Set the flag to true to indicate that the Easter Egg has been triggered
         hasTriggeredEasterEgg = true;
